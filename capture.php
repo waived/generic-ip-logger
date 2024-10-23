@@ -1,7 +1,7 @@
 <?php
 
 // url redirect
-header('Location: www.example.com');
+header('Location: http://www.example.com');
 
 // capture ip address
 $ip = $_SERVER['REMOTE_ADDR'];
