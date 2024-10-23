@@ -23,12 +23,12 @@ Step 3: create an emtpy file called 'log.txt' in the same directory as
 
         WINDOWS: icacls log.txt /deny Everyone:(R,X) /grant "YOUR-USER/GROUP-HERE":(F)
 -------------------------------------------------------------------------------------------
-Step 4: modify your ip-logging script on line #4. This line contains a placeholder domain.
+Step 4: modify your ip-logging script on line #4. This line contains a placeholder url.
         once the ip and other details about the victim has been logged, the script will
         automatically redirect the victim to the true destination url. Replace www.example.com
-        with another domain of your choice.
+        with another url of your choice.
 
-        Example: header('Location: www.github.com');
+        Example: header('Location: https://github.com/waived');
 -------------------------------------------------------------------------------------------
 Step 5: The effective ip-logger url of your script should be something like:
 
