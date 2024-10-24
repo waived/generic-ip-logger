@@ -4,17 +4,17 @@
 header('Location: http://www.example.com');
 
 // capture ip address
-$ip = $_SERVER['REMOTE_ADDR'];
+$_ip = $_SERVER['REMOTE_ADDR'];
 
 // capture user agent
-$userAgent = $_SERVER['HTTP_USER_AGENT'];
+$u_agent = $_SERVER['HTTP_USER_AGENT'];
 
-// capture time and date
-$dateTime = date('Y-m-d H:i:s'); // Format: YYYY-MM-DD HH:MM:SS
+// capture time and date [YYYY-MM-DD HH:MM:SS]
+$_now = date('Y-m-d H:i:s');
 
-// write data to file
+// append to log
 $fo = fopen("log.txt", "a");
-$fw = fwrite($fo, "$dateTime \t $ip \t $userAgent\n");
+$fw = fwrite($fo, "$_now \t $_ip \t $u_agent\n");
 fclose($fo);
 
 ?>
